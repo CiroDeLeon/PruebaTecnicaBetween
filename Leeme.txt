@@ -1,0 +1,19 @@
+Se crearon 3 proyectos para la implementacion de la solucion
+
+app : expone el servicio rest solicitado con puerto aleatorio y una caché interna por 
+      cada url,soporta resilencia usando una cache en ram y si el servicio cliente 
+      demora mucho devuelve un conjunto vacio usando el patron circuit breaker.
+      pueden ejecutar multiples instancias y escalar horizontalmente.
+
+eureka: es un servidor que registra cada microservicio usando como identificacion el app 
+        name del application.properties
+
+gateway: expone el trabajo de todos los microservicios en la ruta requerida 
+         con puerto 5000 usando una estrategia de balanceo de carga.
+
+
+Orden de Ejecucion
+
+primero correr el eureka server.
+segundo el gateway server.
+y por ultimo las instancias que requiera del microservicio
